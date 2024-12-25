@@ -1,0 +1,112 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+      <title>{% block title %}My Portfolio{% endblock %}</title>
+      <meta name="keywords" content="website development, embedded systems, electronics, solar installation, electrical installation">
+      <meta name="description" content="Learn more about Bamidele Samuel, a passionate professional with expertise in website development, electronics, and technology solutions.">
+      <meta name="author" content="Bamidele Samuel">
+      <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+      <link rel="stylesheet" href="{% static 'css/style.css' %}">
+      <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+      <link rel="icon" href="{% static 'images/fevicon.png' %}" type="image/gif">
+      <link rel="stylesheet" href="{% static 'css/jquery.mCustomScrollbar.min.css' %}">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+   </head>
+   <body>
+      <!-- Header -->
+      <header class="header_section header_bg">
+         <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+               <div class="logo">
+                  <a href="{% url 'index' %}"><img src="{% static 'images/logo.png' %}" alt="My Portfolio Logo"></a>
+               </div>
+               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+               </button>
+               <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav ml-auto">
+                     <li class="nav-item"><a class="nav-link" href="{% url 'index' %}">Home</a></li>
+                     <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>
+                     <li class="nav-item"><a class="nav-link" href="{% url 'portfolio' %}">Portfolio</a></li>
+                     <li class="nav-item"><a class="nav-link" href="{% url 'services' %}">Service</a></li>
+                     <li class="nav-item"><a class="nav-link" href="{% url 'blog' %}">Blog</a></li>
+                     <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact Us</a></li>
+                  </ul>
+               </div>
+            </nav>
+         </div>
+      </header>
+      
+      <!-- Content -->
+      <main>
+         {% block content %}
+         <section class="portfolio_section layout_padding">
+            <div class="container">
+               <div class="row">
+                  <div class="col-sm-12">
+                     <h1 class="portfolio_taital">My <span class="portfolio_taital_1">Portfolio</span></h1>
+                  </div>
+               </div>
+               <div class="portfolio_section_2">
+                  <div class="row">
+                     {% for project in projects %}
+                     <div class="col-md-4">
+                        <div class="container_main">
+                           <img src="{{ project.image.url }}" alt="{{ project.title }}" class="image">
+                           <div class="overlay">
+                              <div class="text">
+                                 <h4>{{ project.title }}</h4>
+                                 <div class="btn_main">
+                                    <div class="buy_bt"><a href="{{ project.link }}">See More</a></div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     {% endfor %}
+                  </div>
+               </div>
+            </div>
+         </section>
+         {% endblock %}
+      </main>
+
+      <!-- Footer -->
+      <footer>
+         <div class="footer_section">
+            <div class="container">
+               <div class="location_text">
+                  <ul>
+                     <li><a href="https://www.google.com/maps?q=Osun,+Nigeria" target="_blank"><i class="fa fa-map-marker" aria-hidden="true"></i></a></li>
+                     <li><a href="tel:+2347063556355"><i class="fa fa-phone" aria-hidden="true"></i></a></li>
+                     <li><a href="mailto:samuelbamidele301@gmail.com"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+         <div class="copyright_section">
+            <div class="container">
+               <p class="copyright_text"></p>
+            </div>
+         </div>
+      </footer>
+      
+      <!-- Scripts -->
+      <script src="{% static 'js/jquery.min.js' %}"></script>
+      <script src="{% static 'js/popper.min.js' %}"></script>
+      <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+      <script src="{% static 'js/jquery-3.0.0.min.js' %}"></script>
+      <script src="{% static 'js/plugin.js' %}"></script>
+      <script src="{% static 'js/jquery.mCustomScrollbar.concat.min.js' %}"></script>
+      <script src="{% static 'js/custom.js' %}"></script>
+      <script>
+         document.querySelector('.copyright_text').textContent = 
+            `${new Date().getFullYear()} All Rights Reserved. Design by Samtech`;
+      </script>
+   </body>
+</html>

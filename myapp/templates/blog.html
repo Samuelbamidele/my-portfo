@@ -1,0 +1,100 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Blog Post</title>
+      <meta name="keywords" content="website development, embedded systems, electronics, solar installation, electrical installation">
+      <meta name="description" content="Learn more about Bamidele Samuel, a passionate professional with expertise in website development, electronics, and technology solutions.">
+      <meta name="author" content="Bamidele Samuel">
+      <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+      <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+      <link rel="icon" href="{% static 'images/fevicon.png' %}" type="image/gif">
+      <link rel="stylesheet" href="{% static 'css/jquery.mCustomScrollbar.min.css' %}">
+      <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+   </head>
+   <body>
+      <!-- Header Section -->
+      <div class="header_section header_bg">
+         <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+               <div class="logo"><a href="index.html"><img src="{% static 'images/logo.png' %}" alt="Website Logo"></a></div>
+               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+               <span class="navbar-toggler-icon"></span>
+               </button>
+               <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav ml-auto">
+                     <li class="nav-item"><a class="nav-link" href="{% url 'index' %}">Home</a></li>
+                     <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>
+                     <li class="nav-item"><a class="nav-link" href="{% url 'portfolio' %}">Portfolio</a></li>
+                     <li class="nav-item"><a class="nav-link" href="{% url 'services' %}">Service</a></li>
+                     <li class="nav-item"><a class="nav-link" href="{% url 'blog' %}">Blog</a></li>
+                     <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact Us</a></li>
+                  </ul>
+               </div>
+            </nav>
+         </div>
+      </div>
+      {% block content %}
+      <!-- Blog Section -->
+      <div class="blog_section layout_padding margin_top90">
+         <div class="container">
+            <h1 class="blog_taital">My <span class="blog_taital_1">Blog</span></h1>
+            <div class="row">
+               {% for blog in blogs %}
+               <div class="col-md-4">
+                  <div class="blog_card">
+                     <h4 class="date_text">{{ blog.date|date:"M d" }}</h4>
+                     <h4 class="prep_text">{{ blog.title }}</h4>
+                     {% if blog.image %}
+                     <img src="{{ blog.image.url }}" alt="{{ blog.title }}" class="img-fluid">
+                     {% endif %}
+                     <p class="lorem_text">{{ blog.description }}</p>
+                     {% if blog.link %}
+                     <div class="readmore_bt_1"><a href="{{ blog.link }}" target="_blank">Read More</a></div>
+                     {% endif %}
+                  </div>
+               </div>
+               {% endfor %}
+            </div>
+         </div>
+      </div>
+      {% endblock %}
+      <!-- Footer Section -->
+      <footer>
+         <div class="footer_section margin_top90">
+            <div class="container">
+               <div class="location_text">
+                  <ul>
+                     <li><a href="https://www.google.com/maps?q=Osun,+Nigeria" target="_blank"><i class="fa fa-map-marker" aria-hidden="true"></i></a></li>
+                     <li><a href="tel:+2347063556355"><i class="fa fa-phone" aria-hidden="true"></i></a></li>
+                     <li><a href="mailto:samuelbamidele301@gmail.com"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+         <div class="copyright_section">
+            <div class="container">
+               <p class="copyright_text"></p>
+            </div>
+         </div>
+      </footer>
+      <script src="{% static 'js/jquery.min.js' %}"></script>
+      <script src="{% static 'js/popper.min.js' %}"></script>
+      <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+      <script src="{% static 'js/plugin.js' %}"></script>
+      <script src="{% static 'js/jquery.mCustomScrollbar.concat.min.js' %}"></script>
+      <script src="{% static 'js/custom.js' %}"></script>
+      <script>
+         const copyrightText = document.querySelector('.copyright_text');
+         if (copyrightText) {
+             copyrightText.textContent = `${new Date().getFullYear()} All Rights Reserved. Design by Samtech`;
+         }
+      </script>
+   </body>
+</html>

@@ -1,0 +1,116 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <!-- basic -->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <!-- site metas -->
+      <title>About Me</title>
+      <meta name="keywords" content="website development, embedded systems, electronics, solar installation, electrical installation">
+      <meta name="description" content="Learn more about Bamidele Samuel, a passionate professional with expertise in website development, electronics, and technology solutions.">
+      <meta name="author" content="Bamidele Samuel">
+      <!-- bootstrap css -->
+      <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+      <!-- Responsive-->
+      <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+      <!-- favicon -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+      <link rel="icon" href="{% static 'images/fevicon.png' %}" type="image/gif" />
+   </head>
+   <body>
+      <header class="header_section header_bg">
+         <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+               <div class="logo"><a href="{% url 'index' %}"><img src="{% static 'images/logo.png' %}" alt="Logo"></a></div>
+               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+               <span class="navbar-toggler-icon"></span>
+               </button>
+               <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav ml-auto">
+                     <li class="nav-item">
+                        <a class="nav-link" href="{% url 'index' %}">Home</a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="{% url 'about' %}">About</a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="{% url 'portfolio' %}">Portfolio</a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="{% url 'services' %}">Services</a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="{% url 'blog' %}">Blog</a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="{% url 'contact' %}">Contact Us</a>
+                     </li>
+                  </ul>
+               </div>
+            </nav>
+         </div>
+      </header>
+      <main>
+         <section class="about_section layout_padding margin_90">
+            <div class="container">
+               <div class="row">
+                  <div class="col-sm-12">
+                     <h1 class="services_taital">About <span class="portfolio_taital_1">Me</span></h1>
+                  </div>
+               </div>
+               <div class="about_section"> 
+                  <div class="about_section_2">     
+                     <p class="welcome">
+                        {{ about.content }}
+                     </p>
+                     {% if about.resume %}
+                     <div>
+                        <a href="{{ about.resume.url }}" class="btn btn-primary" download>Download Resume</a>
+                     </div>
+                     {% else %}
+                     <div>
+                        <p>No resume available.</p>
+                     </div>
+                     {% endif %}
+                  </div>
+               </div>
+            </div>
+         </section>
+      </main>
+      <footer>
+         <div class="footer_section">
+            <div class="container">
+               <div class="location_text">
+                  <ul>
+                     <li>
+                        <a href="https://www.google.com/maps?q=Osun,+Nigeria" target="_blank"><i class="fa fa-map-marker" aria-hidden="true"></i></a>
+                     </li>
+                     <li>
+                        <a href="tel:+2347063556355"><i class="fa fa-phone" aria-hidden="true"></i></a>
+                     </li>
+                     <li>
+                        <a href="mailto:samuelbamidele301@gmail.com"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+                     </li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+         <div class="copyright_section">
+            <div class="container">
+               <p class="copyright_text"></p>
+            </div>
+         </div>
+      </footer>
+      <!-- Javascript files-->
+      <script src="{% static 'js/jquery.min.js' %}"></script>
+      <script src="{% static 'js/popper.min.js' %}"></script>
+      <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+      <script>
+         document.querySelector('.copyright_text').textContent = 
+            `${new Date().getFullYear()} All Rights Reserved. Design by Samtech`;
+      </script>
+   </body>
+</html>
