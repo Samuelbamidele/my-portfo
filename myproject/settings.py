@@ -27,7 +27,8 @@ SECRET_KEY = config('DJANGO_SECRET_KEY', default='6764094cf3b67fc9f8db050e531293
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default='False') == 'True'
 
-ALLOWED_HOSTS = ['samTech.onrender.com']
+ALLOWED_HOSTS = ['samtechportfolio.com']
+
 
 
 # Application definition
